@@ -12,7 +12,17 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		package: {
+			exports: (path) => {
+				if (path.startsWith('demos/')) return false;
+				return true
+			},
+			files: (file) => {
+				if (file.startsWith('demos/')) return false;
+				return true
+			}
+		}
 	}
 };
 
