@@ -21,6 +21,9 @@ I've deliberately chosen to have a component and not just a function (e.g. like 
 ```
 npm i -D sveltekit-translate
 ```
+## Live demo
+
+[Demo](https://sveltekit-translate.vercel.app/)
 
 ## Sample Code 
 
