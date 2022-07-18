@@ -8,12 +8,13 @@ I've deliberately chosen to have a component and not just a function (e.g. like 
 
 ## Features
 
-- Use any JSON file or JS object as input
-- Supports unlimited languages
-- Interpolate parameters
-- Svelte Stores are used a lot (Everything is reactive)
-- Typescript native
-- HTML output is sanitized with [DOMPurify](https://github.com/cure53/DOMPurify)
+- 🛩️ Use any JSON file or JS object as input
+- 🛰️ Supports unlimited languages
+- 🛺 Interpolate parameters
+- 🐒 Fallback to the default language for missing values in the current language
+- 🚀 Svelte Stores are used a lot (Everything is reactive)
+- 🦄 Typescript native
+- 🦧 HTML output is sanitized with [DOMPurify](https://github.com/cure53/DOMPurify)
 
 ## Install
 
