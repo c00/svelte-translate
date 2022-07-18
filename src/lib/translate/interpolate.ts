@@ -11,11 +11,11 @@ import { getProperty } from './getProperty';
  export function interpolate(subject: string, params: any): string {
   if (!subject) return subject;
 
-  const regex = /{\s*\S*\s*}/gm;
+  const regex = /{\s*\S+\s*}/gm;
 
   const matches = subject.matchAll(regex);
   for (const m of matches) {
-    const key = m[0].substring(2, m[0].length - 2).trim();
+    const key = m[0].substring(1, m[0].length - 1).trim();
     const value = getProperty(params, key);
     if (typeof value === 'string' || typeof value === 'number')
       subject = subject.replace(m[0], String(value));

@@ -1,38 +1,41 @@
-# create-svelte
+# Svelte-translate
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+An i18n library designed to be easy to use.
 
-## Creating a project
+## Install
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
+```
+npm i -D svelte-translate
 ```
 
-## Developing
+## Basic Setup
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Define your current language and your default language:
 
-```bash
-npm run dev
+```html
+<script lang="ts">
+	import Translate from '$lib/translate/Translate.svelte';
+	import { translationData } from '$lib/mocks/mockTranslations';
+	import type { TranslateOptions } from '$lib/translate/translateStore';
+	import Tx from '$lib/translate/tx.svelte';
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+	let opts: TranslateOptions = { defaultLang: 'en', currentLang: 'nl' };
+	let data = { 
+    en: { title: 'Hello { name }', greeting: 'You are <b>the best!</b>' },
+    nl: { title: 'Hoi { name }', greeting: 'You are <b>the best!</b>' },
+    es: { title: 'Hola { name }', greeting: 'You are <b>the best!</b>' },
+  };
+</script>
+
+<div class="container mx-auto">
+	<Translate {opts} {data}>
+		<h1 class=" mt-4 mb-2 font-bold text-2xl">
+      <Tx text='title' params={{ name: 'world' }}>
+    </h1>
+    <p>
+      <Tx html="greeting" />
+    </p>
+	</Translate>
+</div>
+
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

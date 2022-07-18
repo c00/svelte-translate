@@ -1,0 +1,39 @@
+<script lang="ts">
+	import Translate from '$lib/translate/Translate.svelte';
+	import type { TranslateOptions } from '$lib/translate/translateStore';
+	import Tx from '$lib/translate/tx.svelte';
+	import CurrentTranslations from './CurrentTranslations.svelte';
+	import LanguageButtons from './LanguageButtons.svelte';
+
+	let opts: TranslateOptions = { defaultLang: 'en', currentLang: 'nl' };
+	let data = {
+		en: { title: 'Hello { name }', greeting: 'You are <b>the best!</b>' },
+		nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>' },
+		es: { title: 'Hola { name }', greeting: 'Eres <b>asombrosa!</b>' }
+	};
+
+	let name = 'world';
+</script>
+
+<div class="container mx-auto">
+	<h1 class="text-2xl mt-4 mb-2">Basic Example</h1>
+	<Translate {opts} {data}>
+		<LanguageButtons />
+
+		<div class="my-2">
+			<label>
+				name
+				<input type="text" bind:value={name} class="py-2 px-4 ml-2 border rounded" />
+			</label>
+		</div>
+
+		<h1 class=" mt-4 mb-2 font-bold text-2xl">
+			<Tx text="title" params={{ name }} />
+		</h1>
+		<p>
+			<Tx html="greeting" />
+		</p>
+
+		<CurrentTranslations />
+	</Translate>
+</div>

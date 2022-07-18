@@ -1,15 +1,21 @@
 <script lang="ts">
+import { getContext } from 'svelte';
+
 	import { getProperty } from './getProperty';
 	import { interpolate } from './interpolate';
 	import { sanitizeHtml } from './sanitizeHtml';
-	import { translations, defaultTranslations } from './translateStore';
+	import { CONTEXT_KEY, type SvelteTranslate } from './translateStore';
 
 	export let text: string = null;
 	export let html: string = null;
 
 	export let params: any = {};
 
-	$: if ($translations) setOutput();
+	let translate = getContext<SvelteTranslate>(CONTEXT_KEY);
+
+	$: translations = translate.translations;
+	$: defaultTranslations = translate.defaultTranslations;
+	$: if ($translations || params) setOutput();
 
 	let output: string;
 
