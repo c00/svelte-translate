@@ -1,4 +1,4 @@
-# Svelte-translate
+# Sveltekit Translate
 
 An i18n library designed to be easy to use. It's all still very basic, so if it is lacking certain features, feel free to add some PRs.
 
@@ -19,7 +19,7 @@ I've deliberately chosen to have a component and not just a function (e.g. like 
 ## Install
 
 ```
-npm i -D svelte-translate
+npm i -D sveltekit-translate
 ```
 
 ## Sample Code 
