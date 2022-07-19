@@ -19,8 +19,9 @@ I've deliberately chosen to have a component and not just a function (e.g. like 
 ## Install
 
 ```
-npm i -D sveltekit-translate
+npm i -D sveltekit-translate isomorphic-dompurify
 ```
+
 ## Live demo
 
 [Demo](https://sveltekit-translate.vercel.app/)
@@ -31,13 +32,12 @@ Sample code for all the basic features can be found [here](https://github.com/c0
 
 ## Basic Example
 
+In your `__layout.svelte` create the setup:	
+
 ```html
 <script lang="ts">
-	import Translate from '$lib/translate/Translate.svelte';
-	import type { TranslateOptions } from '$lib/translate/translateStore';
-	import Tx from '$lib/translate/tx.svelte';
-	import CurrentTranslations from './CurrentTranslations.svelte';
-	import LanguageButtons from './LanguageButtons.svelte';
+	import Translate from 'sveltekit-translate/translate/Translate.svelte';
+	import type { TranslateOptions } from 'sveltekit-translate/translate/translateStore';
 
 	let opts: TranslateOptions = { 
     defaultLang: 'en', //Set your default (or fallback) language
@@ -51,21 +51,77 @@ Sample code for all the basic features can be found [here](https://github.com/c0
 		nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>' },
 		es: { title: 'Hola { name }', greeting: 'Eres <b>asombrosa!</b>' }
 	};
+</script>
+
+<Translate {opts} {data}>
+	<slot />
+</Translate>
+```
+
+Now you can translate anything in your app by using the `<Tx />` component:
+
+```html
+<script lang="ts">
+	import Tx from 'sveltekit-translate/translate/tx.svelte';
 
 	let name = 'world';
 </script>
 
-<div class="container mx-auto">
-	<h1 class="text-2xl mt-4 mb-2">Basic Example</h1>
-	<Translate {opts} {data}>
-		<h1 class=" mt-4 mb-2 font-bold text-2xl">
-			<Tx text="title" params={{ name }} />
-		</h1>
-		<p>
-			<Tx html="greeting" />
-		</p>
-	</Translate>
+<div class="my-2">
+	<label>
+		name
+		<input type="text" bind:value={name} class="py-2 px-4 ml-2 border rounded" />
+	</label>
 </div>
+
+<h1 class=" mt-4 mb-2 font-bold text-2xl">
+	<Tx text="title" params={{ name }} />
+</h1>
+<p>
+	<Tx html="greeting" />
+</p>
+```
+
+The `<Translate />` component creates a context called `svelte-translate` that contains a `SvelteTranslate` interface:
+
+```ts
+const { 
+		options, // Writable store with the basic options
+		translations, //Readible store with the translations object of the current language.
+		defaultTranslations // Readible store with the translations object of the default language.
+		allLanguages, // Readible string array of all languages we have translations for
+		allTranslations, // Writable store containing all of the translations. Also container a convenience method `setLang()` to set or update an existing language.
+	} = getContext<SvelteTranslate>(CONTEXT_KEY);
+```
+
+Example for language buttons:
+
+```html
+<script lang="ts">
+	import { getContext } from 'svelte';
+	import { CONTEXT_KEY, type SvelteTranslate } from 'sveltekit-translate/translate/translateStore';
+
+	let { allLanguages, options } = getContext<SvelteTranslate>(CONTEXT_KEY);
+</script>
+
+{#each $allLanguages as lang}
+	<button
+		class="btn px-4 py-2 mr-2 border rounded"
+		class:active={$options.currentLang === lang}
+		on:click={() => ($options.currentLang = lang)}>{lang}</button
+	>
+{/each}
+
+<style>
+	.btn {
+		min-width: 5rem;
+	}
+
+	.active {
+		@apply bg-sky-400;
+	}
+</style>
+
 ```
 
 ## Contributing

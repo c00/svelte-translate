@@ -1,6 +1,6 @@
 {
 	"name": "sveltekit-translate",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"exports": {
 		".": "./translate/Translate.svelte"
 	},
@@ -17,6 +17,10 @@
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
+	"dependencies": {
+		"isomorphic-dompurify": "^0.20.0",
+		"dompurify": "^2.3.9"
+	},
 	"devDependencies": {
 		"@playwright/test": "^1.22.2",
 		"@sveltejs/adapter-auto": "next",
@@ -26,12 +30,10 @@
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"autoprefixer": "^10.4.7",
-		"dompurify": "^2.3.9",
 		"dotenv": "^16.0.1",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"isomorphic-dompurify": "^0.20.0",
 		"jest": "^28.1.3",
 		"postcss": "^8.4.14",
 		"postcss-load-config": "^4.0.1",
