@@ -8,7 +8,8 @@ import type { TranslationContent } from "./translateStore";
  * @param {string} path e.g. user.address.street
  * @return {*}  {*}
  */
- export function getProperty(obj: TranslationContent | string, path: string): string | TranslationContent {
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ export function getProperty(obj: any, path: string): string | TranslationContent {
   if (typeof obj === 'string') return obj;
   if (typeof obj !== 'object') return undefined;
 

@@ -2,9 +2,27 @@
 
 An i18n library designed to be easy to use. It's all still very basic, so if it is lacking certain features, feel free to add some PRs.
 
-The syntax for normal usage is nice and compact. The settings and translations are contained in the context of the `<Translate />` component. Translating strings is done with the `<Tx />` component to translate stuff. The <Tx /> component takes either a `html` or a `text` property to locate the string. Optionally a `params` property can be given for interpolation. (See sample code below.)
+The syntax for normal usage is nice and compact. The settings and translations are contained in the context of the `<Translate />` component. Translating strings can be done with either a component or a function.
 
-I've deliberately chosen to have a component and not just a function (e.g. like `svelte-18n`s `$_('some.path')`) as this becomes problematic with HTML strings. I didn't want to motivate people to do `{@html $_('some-path')}`, as content parsed with `@html` is not sanitized. I strongly believe any HTML that isn't specifically hardcoded should not be trusted by default. So to make sanitization easy, the `<Tx html="path">` component will sanitize output for you using [DOMPurify](https://github.com/cure53/DOMPurify)
+## The `<Tx />` component
+
+The `<Tx />` component takes either a `html` or a `text` property to locate the string. Optionally a `params` property can be given for interpolation. For example `<Tx text="title" />`, or `<Tx html="page.header.subtitle" params={someObject} />`. The former shows text, the latter sanitizes and parses HTML.
+
+Note that attributes (e.g. alt texts) cannot be translated with this method.
+
+## Translations from functions
+
+If you want to translate attributes, or just prefer using functions, you can also use the `$t(path: string, params?: any)` and `$h(path: string, params?: any)` functions. The `$h()` sanitizes the output so it's safe to parse. Note that the `params` parameter is optional in both functions.
+
+The same examples as above can be achieved by doing this: `{ $t('title') }`; and `{@html $h('page.header.subtitle') }`.
+
+## HTML Sanitization
+
+Santizing your html output is important, and should be as easy as possible. The easiest method is to just use the `<Tx html="path" />` component. Here sanitization is built-in.
+
+If you prefer the function-method instead, you have to be mindful that this: `{@html $t(path)}` does _not_ sanitize the output. But this: `{@html $h(path)}` does. This is an easy mistake to make. Which is why I recommend the component version instead.
+
+Sanitizing is done using [DOMPurify](https://github.com/cure53/DOMPurify).
 
 ## Features
 

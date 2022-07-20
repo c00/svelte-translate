@@ -1,8 +1,7 @@
 <script lang="ts">
-import { getContext } from 'svelte';
+	import { getContext } from 'svelte';
+	import { getText } from './getText';
 
-	import { getProperty } from './getProperty';
-	import { interpolate } from './interpolate';
 	import { sanitizeHtml } from './sanitizeHtml';
 	import { CONTEXT_KEY, type SvelteTranslate } from './translateStore';
 
@@ -22,26 +21,18 @@ import { getContext } from 'svelte';
 	function setOutput() {
 		const path = text || html;
 
-		let result = '';
-		let val = getProperty($translations, path);
-		//If not found, fallback to defaults
-		if (val === undefined) val = getProperty($defaultTranslations, path);
-
-		if (val === undefined) {
-			result = path;
-		} else if (typeof val === 'string') {
-			result = val;
-		} else {
-			console.warn(`Path ${path} is not a leaf node`);
-			result = '[object]';
-		}
-
-		output = interpolate(result, params);
+		output = getText({
+			path,
+			cur: $translations,
+			def: $defaultTranslations,
+			params,
+			purify: Boolean(html)
+		});
 	}
 </script>
 
 {#if text}
 	{output}
 {:else}
-	{@html sanitizeHtml(output)}
+	{@html output}
 {/if}

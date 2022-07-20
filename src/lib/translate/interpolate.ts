@@ -8,7 +8,7 @@ import { getProperty } from './getProperty';
  * @param {*} params
  * @return {*}  {string}
  */
- export function interpolate(subject: string, params: any): string {
+ export function interpolate(subject: string, params: unknown): string {
   if (!subject) return subject;
 
   const regex = /{\s*\S+\s*}/gm;

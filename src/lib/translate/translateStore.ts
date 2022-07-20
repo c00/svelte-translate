@@ -1,4 +1,5 @@
 import { derived, writable, type Readable } from 'svelte/store';
+import { getText } from './getText';
 
 export const CONTEXT_KEY = 'svelte-translate';
 
@@ -18,17 +19,19 @@ export interface TranslateOptionsStore extends Readable<TranslateOptions> {
 	setDefault: (lang: string) => void;
 }
 
-export interface AllTranslationsStore extends Readable<TranslationContent> {
-	set: (allData: TranslationContent) => void;
+export interface AllTranslationsStore extends Readable<Record<string, TranslationContent>> {
+	set: (allData: Record<string, TranslationContent>) => void;
 	setLang: (lang: string, data: TranslationContent) => void;
 }
 
 export interface SvelteTranslate {
 	options: TranslateOptionsStore;
 	allTranslations: AllTranslationsStore;
-	defaultTranslations: Readable<TranslationContent | string>;
-	translations: Readable<TranslationContent | string>;
+	defaultTranslations: Readable<TranslationContent>;
+	translations: Readable<TranslationContent>;
 	allLanguages: Readable<string[]>;
+	t: Readable<(path: string, params?: unknown) => string>,
+	h: Readable<(path: string, params?: unknown) => string>,
 }
 
 const defaultTranslateOptions: TranslateOptions = {
@@ -36,8 +39,8 @@ const defaultTranslateOptions: TranslateOptions = {
 	currentLang: 'en'
 };
 
-function getAllTransStore(initial: TranslationContent): AllTranslationsStore {
-	const { set, update, subscribe } = writable<TranslationContent>(initial);
+function getAllTransStore(initial: Record<string, TranslationContent>): AllTranslationsStore {
+	const { set, update, subscribe } = writable<Record<string, TranslationContent>>(initial);
 
 	return {
 		set,
@@ -92,11 +95,21 @@ export function svelteTranslate(opts?: TranslateOptions, translationData?: any):
 		return Object.keys($allTranslations) || [];
 	});
 
+	const t = derived([translations, defaultTranslations], ([cur, def]) => {
+		return (path: string, params?: unknown) => getText({ cur, def, path, params });
+	});
+
+	const h = derived([translations, defaultTranslations], ([cur, def]) => {
+		return (path: string, params?: unknown) => getText({ cur, def, path, params, purify: true });
+	});
+
 	return {
 		options,
 		allTranslations,
 		defaultTranslations,
 		translations,
-		allLanguages
+		allLanguages, 
+		t, 
+		h,
 	};
 }
