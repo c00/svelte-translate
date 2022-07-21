@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { getText } from './getText';
-
-	import { sanitizeHtml } from './sanitizeHtml';
 	import { CONTEXT_KEY, type SvelteTranslate } from './translateStore';
 
 	export let text: string = null;

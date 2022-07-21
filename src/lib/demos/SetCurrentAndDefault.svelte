@@ -7,7 +7,7 @@
 
 	let opts: TranslateOptions = { defaultLang: 'en', currentLang: 'en' };
 	let data = {
-		en: { },
+		en: {},
 		nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>' }
 	};
 
@@ -28,13 +28,23 @@
 
 <div class="container mx-auto">
 	<h1 class="text-2xl mt-4">Set Default and Current Language Example</h1>
-	<h4 class="mb-4"><a class="text-slate-500 hover:underline hover:text-slate-700" href="https://github.com/c00/svelte-translate/tree/main/src/lib/demos/SetCurrentAndDefault.svelte">code on github</a></h4>
+	<h4 class="mb-4">
+		<a
+			class="text-slate-500 hover:underline hover:text-slate-700"
+			href="https://github.com/c00/svelte-translate/tree/main/src/lib/demos/SetCurrentAndDefault.svelte"
+			>code on github</a
+		>
+	</h4>
 	<Translate bind:this={translateComponent} {opts} {data}>
 		<LanguageButtons />
 
 		<div>
-			<button class="py-2 px-4 border rounded my-2 mr-2" on:click={() => setDefault('nl')}>Set default to NL</button>
-			<button class="py-2 px-4 border rounded my-2" on:click={() => setCurrent('nl')}>Set current to NL</button>
+			<button class="py-2 px-4 border rounded my-2 mr-2" on:click={() => setDefault('nl')}
+				>Set default to NL</button
+			>
+			<button class="py-2 px-4 border rounded my-2" on:click={() => setCurrent('nl')}
+				>Set current to NL</button
+			>
 		</div>
 
 		<h1 class=" mt-4 mb-2 font-bold text-2xl">

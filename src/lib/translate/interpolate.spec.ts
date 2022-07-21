@@ -1,17 +1,15 @@
 import { interpolate } from './interpolate';
 
 describe('interpolate', () => {
-
-  test('spaces', () => {
+	test('spaces', () => {
 		const subject = '{   name}';
 		const params = {
-			name: 'spongebob',
+			name: 'spongebob'
 		};
 		const expected = 'spongebob';
 
 		expect(interpolate(subject, params)).toBe(expected);
 	});
-
 
 	test('basic', () => {
 		const subject = '{ name }, {   name}, {number}, {foo.bar}, { nothing }';

@@ -16,11 +16,11 @@ const config = {
 		package: {
 			exports: (path) => {
 				if (path.startsWith('demos/')) return false;
-				return true
+				return true;
 			},
 			files: (file) => {
 				if (file.startsWith('demos/')) return false;
-				return true
+				return true;
 			}
 		}
 	}

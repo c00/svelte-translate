@@ -24,7 +24,13 @@
 
 <div class="container mx-auto">
 	<h1 class="text-2xl mt-4">Add Language Example</h1>
-	<h4 class="mb-4"><a class="text-slate-500 hover:underline hover:text-slate-700" href="https://github.com/c00/svelte-translate/tree/main/src/lib/demos/AddLanguage.svelte">code on github</a></h4>
+	<h4 class="mb-4">
+		<a
+			class="text-slate-500 hover:underline hover:text-slate-700"
+			href="https://github.com/c00/svelte-translate/tree/main/src/lib/demos/AddLanguage.svelte"
+			>code on github</a
+		>
+	</h4>
 	<Translate bind:this={translateComponent} {opts} {data}>
 		<LanguageButtons />
 

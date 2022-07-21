@@ -30,8 +30,8 @@ export interface SvelteTranslate {
 	defaultTranslations: Readable<TranslationContent>;
 	translations: Readable<TranslationContent>;
 	allLanguages: Readable<string[]>;
-	t: Readable<(path: string, params?: unknown) => string>,
-	h: Readable<(path: string, params?: unknown) => string>,
+	t: Readable<(path: string, params?: unknown) => string>;
+	h: Readable<(path: string, params?: unknown) => string>;
 }
 
 const defaultTranslateOptions: TranslateOptions = {
@@ -108,8 +108,8 @@ export function svelteTranslate(opts?: TranslateOptions, translationData?: any):
 		allTranslations,
 		defaultTranslations,
 		translations,
-		allLanguages, 
-		t, 
-		h,
+		allLanguages,
+		t,
+		h
 	};
 }

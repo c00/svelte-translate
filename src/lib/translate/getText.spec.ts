@@ -25,7 +25,7 @@ describe('getText', () => {
 		expect(result).toBe('Hello default');
 	});
 
-  test('getText, fallback to path', () => {
+	test('getText, fallback to path', () => {
 		const def = {};
 		const cur = {};
 		const params = {};
@@ -61,10 +61,10 @@ describe('getText', () => {
 		expect(result).toBe('Hello Spongebob');
 	});
 
-  test('getText, purify', () => {
+	test('getText, purify', () => {
 		const def = { title: 'Hello default' };
 		const cur = { title: 'Hello <script>alert("wut")</script>' };
-		const params = { };
+		const params = {};
 		const purify = true;
 		const path = 'title';
 

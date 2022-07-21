@@ -1,10 +1,10 @@
 <script lang="ts">
-	import AddLanguage from '../lib/demos/AddLanguage.svelte';
-	import Basic from '../lib/demos/Basic.svelte';
-	import Fallback from '../lib/demos/Fallback.svelte';
-	import Missing from '../lib/demos/Missing.svelte';
-	import Nested from '../lib/demos/Nested.svelte';
-	import SetCurrentAndDefault from '../lib/demos/SetCurrentAndDefault.svelte';
+	import AddLanguage from '$lib/demos/AddLanguage.svelte';
+	import Basic from '$lib/demos/Basic.svelte';
+	import Fallback from '$lib/demos/Fallback.svelte';
+	import Missing from '$lib/demos/Missing.svelte';
+	import Nested from '$lib/demos/Nested.svelte';
+	import SetCurrentAndDefault from '$lib/demos/SetCurrentAndDefault.svelte';
 </script>
 
 <div class="container mx-auto pb-24">

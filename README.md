@@ -44,35 +44,35 @@ npm i -D sveltekit-translate isomorphic-dompurify
 
 [Demo](https://sveltekit-translate.vercel.app/)
 
-## Sample Code 
+## Sample Code
 
 Sample code for all the basic features can be found [here](https://github.com/c00/svelte-translate/tree/main/src/lib/demos).
 
 ## Basic Example
 
-In your `__layout.svelte` create the setup:  
+In your `__layout.svelte` create the setup:
 
 ```html
 <script lang="ts">
-  import Translate from 'sveltekit-translate/translate/Translate.svelte';
-  import type { TranslateOptions } from 'sveltekit-translate/translate/translateStore';
+	import Translate from 'sveltekit-translate/translate/Translate.svelte';
+	import type { TranslateOptions } from 'sveltekit-translate/translate/translateStore';
 
-  let opts: TranslateOptions = { 
-    defaultLang: 'en', //Set your default (or fallback) language
-    currentLang: 'nl', //Set your current language
-  };
+	let opts: TranslateOptions = {
+		defaultLang: 'en', //Set your default (or fallback) language
+		currentLang: 'nl' //Set your current language
+	};
 
-  //Initial translation data. This could of course be fetched from somewhhere.
-  //The library doesn't care how you get the translations.
-  let data = {
-    en: { title: 'Hello { name }', greeting: 'You are <b>the best!</b>' },
-    nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>' },
-    es: { title: 'Hola { name }', greeting: 'Eres <b>asombrosa!</b>' }
-  };
+	//Initial translation data. This could of course be fetched from somewhhere.
+	//The library doesn't care how you get the translations.
+	let data = {
+		en: { title: 'Hello { name }', greeting: 'You are <b>the best!</b>' },
+		nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>' },
+		es: { title: 'Hola { name }', greeting: 'Eres <b>asombrosa!</b>' }
+	};
 </script>
 
 <Translate {opts} {data}>
-  <slot />
+	<slot />
 </Translate>
 ```
 
@@ -80,30 +80,30 @@ Now you can translate anything in your app by using the `<Tx />` component:
 
 ```html
 <script lang="ts">
-  import Tx from 'sveltekit-translate/translate/tx.svelte';
+	import Tx from 'sveltekit-translate/translate/tx.svelte';
 
-  let name = 'world';
+	let name = 'world';
 </script>
 
 <div class="my-2">
-  <label>
-    name
-    <input type="text" bind:value={name} class="py-2 px-4 ml-2 border rounded" />
-  </label>
+	<label>
+		name
+		<input type="text" bind:value="{name}" class="py-2 px-4 ml-2 border rounded" />
+	</label>
 </div>
 
 <h1 class=" mt-4 mb-2 font-bold text-2xl">
-  <Tx text="title" params={{ name }} />
+	<Tx text="title" params="{{" name }} />
 </h1>
 <p>
-  <Tx html="greeting" />
+	<Tx html="greeting" />
 </p>
 ```
 
 The `<Translate />` component creates a context called `svelte-translate` that contains a `SvelteTranslate` interface:
 
 ```ts
-const { 
+const {
     options, // Writable store with the basic options
     translations, //Readible store with the translations object of the current language.
     defaultTranslations // Readible store with the translations object of the default language.

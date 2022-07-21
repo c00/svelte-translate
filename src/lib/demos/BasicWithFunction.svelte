@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { CONTEXT_KEY, type SvelteTranslate } from '../translate/translateStore';
 
-  export let name: string;
+	export let name: string;
 
 	let { t, h } = getContext<SvelteTranslate>(CONTEXT_KEY);
 </script>
@@ -16,6 +16,10 @@
 </p>
 
 <div class="m-4">
-  Image with translated alt text and title
-  <img src="https://api.lorem.space/image/movie?w=150&h=220" alt="{$t('alt-text')}" title="{$t('alt-text')}" />
+	Image with translated alt text and title
+	<img
+		src="https://api.lorem.space/image/movie?w=150&h=220"
+		alt={$t('alt-text')}
+		title={$t('alt-text')}
+	/>
 </div>

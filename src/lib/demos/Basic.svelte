@@ -8,9 +8,21 @@
 
 	let opts: TranslateOptions = { defaultLang: 'en', currentLang: 'nl' };
 	let data = {
-		en: { title: 'Hello { name }', greeting: 'You are <b>the best!</b>', 'alt-text': "Such a great movie" },
-		nl: { title: 'Hoi { name }', greeting: 'Jij bent een <b>toppertje!</b>', 'alt-text': "Wat een lekkere film" },
-		es: { title: 'Hola { name }', greeting: 'Eres <b>asombrosa!</b>', 'alt-text': "Una gran pelicula" }
+		en: {
+			title: 'Hello { name }',
+			greeting: 'You are <b>the best!</b>',
+			'alt-text': 'Such a great movie'
+		},
+		nl: {
+			title: 'Hoi { name }',
+			greeting: 'Jij bent een <b>toppertje!</b>',
+			'alt-text': 'Wat een lekkere film'
+		},
+		es: {
+			title: 'Hola { name }',
+			greeting: 'Eres <b>asombrosa!</b>',
+			'alt-text': 'Una gran pelicula'
+		}
 	};
 
 	let name = 'world';
