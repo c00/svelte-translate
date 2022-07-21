@@ -1,4 +1,4 @@
-import { getProperty } from './getProperty';
+import { getProperty } from './getProperty.js';
 
 /**
  * Replace '{ value }' occurances with the data from params

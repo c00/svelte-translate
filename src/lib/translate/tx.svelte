@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { getText } from './getText';
-	import { CONTEXT_KEY, type SvelteTranslate } from './translateStore';
+	import { getText } from './getText.js';
+	import { CONTEXT_KEY, type SvelteTranslate } from './translateStore.js';
 
 	export let text: string = null;
 	export let html: string = null;

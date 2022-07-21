@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import { CONTEXT_KEY, svelteTranslate, type TranslateOptions } from './translateStore';
+	import { CONTEXT_KEY, svelteTranslate, type TranslateOptions } from './translateStore.js';
 
 	export let opts: TranslateOptions = null;
 	export let data: any = null;

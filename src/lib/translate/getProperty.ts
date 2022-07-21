@@ -1,4 +1,4 @@
-import type { TranslationContent } from './translateStore';
+import type { TranslationContent } from '$lib/translate/translateStore.js';
 
 /**
  * Get a property arbitrarily deep within an object.

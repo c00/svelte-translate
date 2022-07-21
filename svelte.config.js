@@ -15,13 +15,13 @@ const config = {
 		adapter: adapter(),
 		package: {
 			exports: (path) => {
-				if (path === 'index.ts') return true;
 				if (path.startsWith('demos/')) return false;
+				if (path.endsWith('.spec.ts')) return false;
 				return true;
 			},
 			files: (file) => {
-				if (file === 'index.ts') return true;
 				if (file.startsWith('demos/')) return false;
+				if (file.endsWith('.spec.ts')) return false;
 				return true;
 			}
 		}

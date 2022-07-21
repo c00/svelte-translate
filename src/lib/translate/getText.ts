@@ -1,7 +1,7 @@
-import type { TranslationContent } from './translateStore';
-import { getProperty } from './getProperty';
-import { interpolate } from './interpolate';
-import { sanitizeHtml } from './sanitizeHtml';
+import type { TranslationContent } from '$lib/translate/translateStore.js';
+import { getProperty } from '$lib/translate/getProperty.js';
+import { interpolate } from '$lib/translate/interpolate.js';
+import { sanitizeHtml } from '$lib/translate/sanitizeHtml.js';
 
 export interface GetTextData {
 	path: string;

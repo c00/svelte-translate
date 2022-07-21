@@ -1,5 +1,5 @@
 import { derived, writable, type Readable } from 'svelte/store';
-import { getText } from './getText';
+import { getText } from './getText.js';
 
 export const CONTEXT_KEY = 'svelte-translate';
 
