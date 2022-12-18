@@ -1,5 +1,5 @@
-import DOMPurify from 'isomorphic-dompurify';
+import sanitize from 'sanitize-html';
 
 export function sanitizeHtml(input: string): string {
-	return DOMPurify.sanitize(input);
+	return sanitize(input);
 }

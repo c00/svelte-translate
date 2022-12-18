@@ -15,8 +15,7 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"dependencies": {
-		"dompurify": "^2.4.1",
-		"isomorphic-dompurify": "^0.20.0",
+		"sanitize-html": "^2.8.0",
 		"svelte": "^3.55.0"
 	},
 	"devDependencies": {
@@ -26,6 +25,7 @@
 		"@sveltejs/package": "^1.0.1",
 		"@types/dompurify": "^2.4.0",
 		"@types/jest": "^28.1.8",
+		"@types/sanitize-html": "^2.8.0",
 		"@typescript-eslint/eslint-plugin": "^5.46.1",
 		"@typescript-eslint/parser": "^5.46.1",
 		"autoprefixer": "^10.4.13",
