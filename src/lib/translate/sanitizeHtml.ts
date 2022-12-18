@@ -1,4 +1,4 @@
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 
 let failed: string = null;
 
@@ -10,7 +10,7 @@ export function sanitizeHtml(input: string): string {
 		return 'NO WINDOW';
 	}
 	try {
-		console.log(DOMPurify);
+		console.log(DOMPurify, typeof DOMPurify.sanitize);
 		return DOMPurify.sanitize(input);
 		// return typeof DOMPurify;
 	} catch (err) {
