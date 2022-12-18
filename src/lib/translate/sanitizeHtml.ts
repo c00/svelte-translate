@@ -1,6 +1,18 @@
 import DOMPurify from 'isomorphic-dompurify';
 
+let failed: string = null;
+
 export function sanitizeHtml(input: string): string {
-	if (typeof window === undefined) return 'NOT PURIFIED';
-	return DOMPurify.sanitize(input);
+	if (failed) return 'FAILURE ' + failed;
+
+	if (typeof window === undefined) {
+		failed = 'No window';
+		return 'NO WINDOW';
+	}
+	try {
+		return DOMPurify.sanitize(input);
+	} catch (err) {
+		failed = 'Sanitize Error: ' + String(err);
+		return 'Sanitize error';
+	}
 }
