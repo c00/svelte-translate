@@ -15,7 +15,7 @@ specifiers:
   eslint: ^8.30.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
-  isomorphic-dompurify: ^0.20.0
+  isomorphic-dompurify: ^0.24.0
   jest: ^28.1.3
   jsdom: ^20.0.3
   postcss: ^8.4.20
@@ -34,7 +34,7 @@ specifiers:
 
 dependencies:
   dompurify: 2.4.1
-  isomorphic-dompurify: 0.20.0
+  isomorphic-dompurify: 0.24.0
   jsdom: 20.0.3
   svelte: 3.55.0
 
@@ -2444,8 +2444,8 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /isomorphic-dompurify/0.20.0:
-    resolution: {integrity: sha512-ha3GBgVb9faPfGknAkwokYxqvdnh6c+R33LtgoXj4Lttg3b5DN5YH1P3zX1AHFFvTCOL7TER5zwGnUbJcQ85Cw==}
+  /isomorphic-dompurify/0.24.0:
+    resolution: {integrity: sha512-YePhHHQAVsU1CYkL3gKQmga+fTAh66eWg+RVQOVFRNfzoLkd+gFhFY5S+g80f8b0v2JBMYg+npqdZI1vOxTOBQ==}
     dependencies:
       '@types/dompurify': 2.4.0
       dompurify: 2.4.1

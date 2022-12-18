@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"dompurify": "^2.4.1",
-		"isomorphic-dompurify": "^0.20.0",
+		"isomorphic-dompurify": "^0.24.0",
 		"jsdom": "^20.0.3",
 		"svelte": "^3.55.0"
 	},
