@@ -10,7 +10,7 @@ export function sanitizeHtml(input: string): string {
 		return 'NO WINDOW';
 	}
 	try {
-		return DOMPurify.sanitize(input);
+		return typeof DOMPurify;
 	} catch (err) {
 		failed = 'Sanitize Error: ' + String(err);
 		return 'Sanitize error';
