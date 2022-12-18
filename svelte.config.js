@@ -12,18 +12,19 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter(),
-		package: {
-			exports: (path) => {
-				if (path.startsWith('demos/')) return false;
-				if (path.endsWith('.spec.ts')) return false;
-				return true;
-			},
-			files: (file) => {
-				if (file.startsWith('demos/')) return false;
-				if (file.endsWith('.spec.ts')) return false;
-				return true;
-			}
+		adapter: adapter()
+	},
+
+	package: {
+		exports: (path) => {
+			if (path.startsWith('demos/')) return false;
+			if (path.endsWith('.spec.ts')) return false;
+			return true;
+		},
+		files: (file) => {
+			if (file.startsWith('demos/')) return false;
+			if (file.endsWith('.spec.ts')) return false;
+			return true;
 		}
 	}
 };
