@@ -22,7 +22,7 @@ Santizing your html output is important, and should be as easy as possible. The 
 
 If you prefer the function-method instead, you have to be mindful that this: `{@html $t(path)}` does _not_ sanitize the output. But this: `{@html $h(path)}` does. This is an easy mistake to make. Which is why I recommend the component version instead.
 
-Sanitizing is done using [DOMPurify](https://github.com/cure53/DOMPurify).
+Sanitizing is done using [sanitize-html](https://github.com/apostrophecms/sanitize-html).
 
 ## Features
 
@@ -32,7 +32,7 @@ Sanitizing is done using [DOMPurify](https://github.com/cure53/DOMPurify).
 - 🐒 Fallback to the default language for missing values in the current language
 - 🚀 Svelte Stores are used a lot (Everything is reactive)
 - 🦄 Typescript native
-- 🦧 HTML output is sanitized with [DOMPurify](https://github.com/cure53/DOMPurify)
+- 🦧 HTML output is sanitized with [sanitize-html](https://github.com/apostrophecms/sanitize-html)
 
 ## Install
 
