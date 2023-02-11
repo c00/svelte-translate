@@ -18,4 +18,9 @@ describe('getProperty', () => {
 			expect(getProperty(data, i.path)).toBe(i.expected);
 		}
 	});
+
+	test('no params object', () => {
+		expect(getProperty(undefined, 'foo')).toBeUndefined();
+		expect(getProperty(null, 'foo')).toBeUndefined();
+	})
 });

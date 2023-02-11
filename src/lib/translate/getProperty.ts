@@ -10,6 +10,8 @@ import type { TranslationContent } from '$lib/translate/translateStore.js';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getProperty(obj: any, path: string): string | TranslationContent {
+	if (obj === undefined) return undefined;
+	if (obj === null) return undefined;
 	if (typeof obj === 'string') return obj;
 	if (typeof obj !== 'object') return undefined;
 

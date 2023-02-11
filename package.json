@@ -1,6 +1,6 @@
 {
 	"name": "sveltekit-translate",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"scripts": {
 		"start": "vite dev",
 		"dev": "vite dev",
