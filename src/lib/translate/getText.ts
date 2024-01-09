@@ -22,8 +22,8 @@ export function getText(data: GetTextData): string {
 	} else if (typeof val === 'string') {
 		result = val;
 	} else {
-		console.warn(`Path ${data.path} is not a leaf node`);
-		result = '[object]';
+		console.warn(`Path ${data.path} is not a leaf node`, val);
+		result = data.path;
 	}
 
 	result = interpolate(result, data.params);
