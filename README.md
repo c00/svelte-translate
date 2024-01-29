@@ -37,7 +37,7 @@ Sanitizing is done using [sanitize-html](https://github.com/apostrophecms/saniti
 ## Install
 
 ```
-npm i -D sveltekit-translate isomorphic-dompurify
+npm i -D sveltekit-translate
 ```
 
 ## Live demo
@@ -50,7 +50,7 @@ Sample code for all the basic features can be found [here](https://github.com/c0
 
 ## Basic Example
 
-In your `__layout.svelte` create the setup:
+In your `+layout.svelte` create the setup:
 
 ```html
 <script lang="ts">
