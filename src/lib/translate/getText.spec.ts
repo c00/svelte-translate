@@ -5,10 +5,9 @@ describe('getText', () => {
 		const def = { title: 'Hello default' };
 		const cur = { title: 'Hello current' };
 		const params = {};
-		const purify = false;
 		const path = 'title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('Hello current');
 	});
@@ -17,10 +16,9 @@ describe('getText', () => {
 		const def = { title: 'Hello default' };
 		const cur = {};
 		const params = {};
-		const purify = false;
 		const path = 'title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('Hello default');
 	});
@@ -29,10 +27,9 @@ describe('getText', () => {
 		const def = {};
 		const cur = {};
 		const params = {};
-		const purify = false;
 		const path = 'title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('title');
 	});
@@ -41,10 +38,9 @@ describe('getText', () => {
 		const def = { its: { too: { deep: { title: 'Hello default' } } } };
 		const cur = { its: { too: { deep: { title: 'Hello current' } } } };
 		const params = {};
-		const purify = false;
 		const path = 'its.too.deep.title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('Hello current');
 	});
@@ -53,10 +49,9 @@ describe('getText', () => {
 		const def = { title: 'Hello default' };
 		const cur = { title: 'Hello {name}' };
 		const params = { name: 'Spongebob' };
-		const purify = false;
 		const path = 'title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('Hello Spongebob');
 	});
@@ -65,10 +60,9 @@ describe('getText', () => {
 		const def = { title: 'Hello default' };
 		const cur = { title: 'Hello <script>alert("wut")</script>' };
 		const params = {};
-		const purify = true;
 		const path = 'title';
 
-		const result = getText({ def, cur, params, purify, path });
+		const result = getText({ def, cur, params, path });
 
 		expect(result).toBe('Hello ');
 	});

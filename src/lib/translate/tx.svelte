@@ -23,8 +23,7 @@
 			path,
 			cur: $translations,
 			def: $defaultTranslations,
-			params,
-			purify: Boolean(html)
+			params
 		});
 	}
 </script>

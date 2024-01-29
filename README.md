@@ -6,23 +6,19 @@ The syntax for normal usage is nice and compact. The settings and translations a
 
 ## The `<Tx />` component
 
-The `<Tx />` component takes either a `html` or a `text` property to locate the string. Optionally a `params` property can be given for interpolation. For example `<Tx text="title" />`, or `<Tx html="page.header.subtitle" params={someObject} />`. The former shows text, the latter sanitizes and parses HTML.
+The `<Tx />` component takes either a `html` or a `text` property to locate the string. Optionally a `params` property can be given for interpolation. For example `<Tx text="title" />`, or `<Tx html="page.header.subtitle" params={someObject} />`. The former shows text, the latter parses HTML (without sanitizing).
 
 Note that attributes (e.g. alt texts) cannot be translated with this method.
 
 ## Translations from functions
 
-If you want to translate attributes, or just prefer using functions, you can also use the `$t(path: string, params?: any)` and `$h(path: string, params?: any)` functions. The `$h()` sanitizes the output so it's safe to parse. Note that the `params` parameter is optional in both functions.
+If you want to translate attributes, or just prefer using functions, you can also use the `$t(path: string, params?: any)` function. Note that the `params` parameter is optional.
 
-The same examples as above can be achieved by doing this: `{ $t('title') }`; and `{@html $h('page.header.subtitle') }`.
+The same examples as above can be achieved by doing this: `{ $t('title') }`; and `{@html $t('page.header.subtitle') }`.
 
 ## HTML Sanitization
 
-Santizing your html output is important, and should be as easy as possible. The easiest method is to just use the `<Tx html="path" />` component. Here sanitization is built-in.
-
-If you prefer the function-method instead, you have to be mindful that this: `{@html $t(path)}` does _not_ sanitize the output. But this: `{@html $h(path)}` does. This is an easy mistake to make. Which is why I recommend the component version instead.
-
-Sanitizing is done using [sanitize-html](https://github.com/apostrophecms/sanitize-html).
+From version 1, I've removed html sanitization as it is becoming harder to support it. I might build it back at some point if there's enough questions for it.
 
 ## Features
 
@@ -32,7 +28,6 @@ Sanitizing is done using [sanitize-html](https://github.com/apostrophecms/saniti
 - 🐒 Fallback to the default language for missing values in the current language
 - 🚀 Svelte Stores are used a lot (Everything is reactive)
 - 🦄 Typescript native
-- 🦧 HTML output is sanitized with [sanitize-html](https://github.com/apostrophecms/sanitize-html)
 
 ## Install
 

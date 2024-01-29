@@ -14,7 +14,7 @@
 	>
 {/each}
 
-<style>
+<style lang="postcss">
 	.btn {
 		min-width: 5rem;
 	}

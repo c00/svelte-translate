@@ -4,7 +4,7 @@
 
 	export let name: string;
 
-	let { t, h } = getContext<SvelteTranslate>(CONTEXT_KEY);
+	let { t } = getContext<SvelteTranslate>(CONTEXT_KEY);
 </script>
 
 <p class="mb-2">
@@ -12,7 +12,7 @@
 </p>
 
 <p class="mb-2">
-	{@html $h('greeting')} <span class="italic">&lt;-- Called from function</span>
+	{@html $t('greeting')} <span class="italic">&lt;-- Called from function</span>
 </p>
 
 <div class="m-4">

@@ -31,7 +31,7 @@ export interface SvelteTranslate {
 	translations: Readable<TranslationContent>;
 	allLanguages: Readable<string[]>;
 	t: Readable<(path: string, params?: unknown) => string>;
-	h: Readable<(path: string, params?: unknown) => string>;
+	// h: Readable<(path: string, params?: unknown) => string>;
 }
 
 const defaultTranslateOptions: TranslateOptions = {
@@ -99,9 +99,9 @@ export function svelteTranslate(opts?: TranslateOptions, translationData?: any):
 		return (path: string, params?: unknown) => getText({ cur, def, path, params });
 	});
 
-	const h = derived([translations, defaultTranslations], ([cur, def]) => {
-		return (path: string, params?: unknown) => getText({ cur, def, path, params, purify: true });
-	});
+	// const h = derived([translations, defaultTranslations], ([cur, def]) => {
+	// 	return (path: string, params?: unknown) => getText({ cur, def, path, params, purify: true });
+	// });
 
 	return {
 		options,
@@ -109,7 +109,7 @@ export function svelteTranslate(opts?: TranslateOptions, translationData?: any):
 		defaultTranslations,
 		translations,
 		allLanguages,
-		t,
-		h
+		t
+		// h
 	};
 }

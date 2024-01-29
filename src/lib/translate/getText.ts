@@ -1,13 +1,11 @@
-import type { TranslationContent } from '$lib/translate/translateStore.js';
 import { getProperty } from '$lib/translate/getProperty.js';
 import { interpolate } from '$lib/translate/interpolate.js';
-import { sanitizeHtml } from '$lib/translate/sanitizeHtml.js';
+import type { TranslationContent } from '$lib/translate/translateStore.js';
 
 export interface GetTextData {
 	path: string;
 	cur: TranslationContent;
 	def: TranslationContent;
-	purify?: boolean;
 	params?: unknown;
 }
 
@@ -27,10 +25,6 @@ export function getText(data: GetTextData): string {
 	}
 
 	result = interpolate(result, data.params);
-
-	if (data.purify) {
-		result = sanitizeHtml(result);
-	}
 
 	return result;
 }
